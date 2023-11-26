@@ -1,15 +1,17 @@
+import Container from "../Component/Container";
+
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
-        <nav className="grid grid-flow-col gap-4">
+    <footer className="footer footer-center  p-10 bg-base-200 text-base-content rounded">
+      <Container>
+        <nav className="grid grid-flow-col  gap-4">
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
           <a className="link link-hover">Jobs</a>
           <a className="link link-hover">Press kit</a>
         </nav>
         <nav>
-          <div className="grid grid-flow-col gap-4">
+          <div className="grid grid-flow-col gap-4 ">
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,8 +50,8 @@ const Footer = () => {
         <aside>
           <p>Copyright © 2023 - All right reserved by Burger Shop Ltd</p>
         </aside>
-      </footer>
-    </div>
+      </Container>
+    </footer>
   );
 };
 
