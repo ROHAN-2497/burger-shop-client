@@ -1,4 +1,3 @@
-import Container from "../Component/Container";
 
 const NavBar = () => {
   const navOption  = <>
@@ -11,7 +10,6 @@ const NavBar = () => {
   </>
   return (
     <div className="navbar bg-pink-100">
-      <Container>
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -31,7 +29,6 @@ const NavBar = () => {
   <div className="navbar-end">
     <a className="btn">Button</a>
   </div>
-  </Container>
 </div>
   );
 };

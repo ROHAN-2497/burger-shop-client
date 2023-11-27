@@ -6,8 +6,16 @@ const Banner = () => {
     <div>
       <Carousel>
         <div>
-          <img src={banner1} />
-        </div>
+          <div >
+            {" "}
+            <img
+            
+            src={banner1} />
+          </div>
+         
+            </div>
+        
+        
       </Carousel>
     </div>
   );
