@@ -1,10 +1,9 @@
-import React from "react";
 
-const Container = ({ children }) => {
-  return React.createElement(
-    "div",
-    { className: " max-w-screen-xl mx-auto" },
-    children
+const Container = ({children}) => {
+  return (
+    <div className="mx-auto max-w-7xl">
+      {children}
+    </div>
   );
 };
 
