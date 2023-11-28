@@ -6,16 +6,11 @@ const Banner = () => {
     <div>
       <Carousel>
         <div>
-          <div >
-            {" "}
-            <img
-            
-            src={banner1} />
+          <div>
+            <img src={banner1} />
+            <h1 className="relative ">this is</h1>
           </div>
-         
-            </div>
-        
-        
+        </div>
       </Carousel>
     </div>
   );
