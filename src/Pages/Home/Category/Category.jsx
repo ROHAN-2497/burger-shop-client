@@ -11,49 +11,49 @@ import slide5 from "../../../assets/home/slide5.jpg";
 
 const Category = () => {
   return (
-    <Swiper
-      slidesPerView={4}
-      spaceBetween={30}
-      pagination={{
-        clickable: true,
-      }}
-      modules={[Pagination]}
-      className="mySwiper  mb-24"
-    >
-      <SwiperSlide>
-        <img src={slide1} alt="" />
-        <h3 className="uppercase text-4xl  -mt-20 left-16 absolute text-white">
-          salads
-        </h3>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slide2} alt="" />
-        <h3 className="uppercase text-4xl  -mt-20 left-16 absolute text-white">
-          pizzas
-        </h3>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slide3} alt="" />
-        <h3 className="uppercase text-4xl  -mt-20 left-16 absolute text-white">
-          soups
-        </h3>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slide4} alt="" />
-        <h3 className="uppercase text-4xl  -mt-20 left-16 absolute text-white">
-          deserts
-        </h3>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={slide5} alt="" />
-        <h3 className="uppercase text-4xl  -mt-20 left-16 absolute text-white">
-          salads
-        </h3>
-      </SwiperSlide>
-    </Swiper>
+    <section>
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper  mb-24"
+      >
+        <SwiperSlide>
+          <img src={slide1} alt="" />
+          <h3 className="uppercase text-4xl  -mt-20 left-16 absolute text-white">
+            salads
+          </h3>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slide2} alt="" />
+          <h3 className="uppercase text-4xl  -mt-20 left-16 absolute text-white">
+            pizzas
+          </h3>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slide3} alt="" />
+          <h3 className="uppercase text-4xl  -mt-20 left-16 absolute text-white">
+            soups
+          </h3>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slide4} alt="" />
+          <h3 className="uppercase text-4xl  -mt-20 left-16 absolute text-white">
+            deserts
+          </h3>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slide5} alt="" />
+          <h3 className="uppercase text-4xl  -mt-20 left-16 absolute text-white">
+            salads
+          </h3>
+        </SwiperSlide>
+      </Swiper>
+    </section>
   );
 };
 
 export default Category;
-
-
