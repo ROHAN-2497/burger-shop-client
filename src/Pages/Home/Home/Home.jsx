@@ -3,6 +3,7 @@ import Category from "../Category/Category";
 import Disclaimer from "../Disclaimer/Disclaimer";
 import Featured from "../Featured/Featured";
 import PopularItem from "../PopularItem/PopularItem";
+import Testimonials from "../Testimonials/Testimonials";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Disclaimer/>
       <PopularItem/>
       <Featured/>
+      <Testimonials/>
     </div>
   );
 };
