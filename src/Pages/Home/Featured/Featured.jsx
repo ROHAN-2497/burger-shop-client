@@ -1,14 +1,14 @@
 import SectionTitle from "../../../Component/SectionTitle/SectionTitle";
 import pic1 from "../../../assets/home/featured.jpg";
-import '../Featured/Featured.css'
+import "../Featured/Featured.css";
 const Featured = () => {
   return (
-    <div className="featured text-white pt-8 my-20">
+    <div className="featured bg-fixed  text-white pt-8 my-20">
       <SectionTitle
         subHeading="Check it out"
         heading="from our menu"
       ></SectionTitle>
-      <div className="  md:flex justify-center items-center space-x-4 pt-12 pb-20 px-36 ">
+      <div className="  md:flex justify-center  bg-slate-700 bg-opacity-60 pb-20 items-center p-10  px-36 ">
         <div>
           <img src={pic1} alt="" />
         </div>
