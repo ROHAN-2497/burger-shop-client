@@ -1,7 +1,13 @@
+import { Helmet } from "react-helmet";
+
 const Menu = () => {
-  return <div className="text-white">
-    <h2>menu</h2>
-  </div>;
+  return (
+    <div>
+      <Helmet>
+      <title>Burger Shop | Menu </title>
+      </Helmet>
+    </div>
+  );
 };
 
 export default Menu;
