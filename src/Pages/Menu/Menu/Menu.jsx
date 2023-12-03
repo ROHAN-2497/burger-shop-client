@@ -3,6 +3,7 @@ import Cover from "../Cover/Cover";
 import menuImg from "../../../assets/menu/banner3.jpg";
 import useMenu from "../../../Hooks/useMenu";
 import SectionTitle from "../../../Component/SectionTitle/SectionTitle";
+import MenuCategory from "../MenuCategory/MenuCategory";
 const Menu = () => {
   const [menu] = useMenu();
   const dessert = menu.filter((item) => item.category === "dessert");
@@ -22,6 +23,7 @@ const Menu = () => {
         subHeading="Don't miss"
         heading={"TODAY'S OFFER"}
       ></SectionTitle>
+      <MenuCategory items={offered}></MenuCategory>
     </div>
   );
 };
