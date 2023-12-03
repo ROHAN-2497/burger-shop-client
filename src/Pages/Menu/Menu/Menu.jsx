@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import Cover from "../Cover/Cover";
 
 const Menu = () => {
   return (
@@ -6,6 +7,7 @@ const Menu = () => {
       <Helmet>
       <title>Burger Shop | Menu </title>
       </Helmet>
+      <Cover></Cover>
     </div>
   );
 };
