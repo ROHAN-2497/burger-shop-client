@@ -18,7 +18,6 @@ const Menu = () => {
       <Helmet>
         <title>Burger Shop | Menu </title>
       </Helmet>
-      <Cover img={menuImg} title="Our Menu"></Cover>
       <SectionTitle
         subHeading="Don't miss"
         heading={"TODAY'S OFFER"}
