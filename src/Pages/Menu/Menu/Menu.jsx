@@ -11,11 +11,10 @@ import MenuCategory from "../MenuCategory/MenuCategory";
 const Menu = () => {
   const [menu] = useMenu();
   const desserts = menu.filter((item) => item.category === "dessert");
-  const pizzas= menu.filter((item) => item.category === "pizza");
+  const pizzas = menu.filter((item) => item.category === "pizza");
   const salads = menu.filter((item) => item.category === "salad");
   const soups = menu.filter((item) => item.category === "soup");
   const offered = menu.filter((item) => item.category === "offered");
-  const drinks = menu.filter((item) => item.category === "drinks");
 
   return (
     <div>
@@ -30,28 +29,25 @@ const Menu = () => {
       {/* offered Items */}
       <MenuCategory items={offered}></MenuCategory>
       {/* desserts Items */}
-      <MenuCategory  items={desserts}
-      title="desserts"
-      img={dessertsImg}
+      <MenuCategory
+        items={desserts}
+        title="desserts"
+        img={dessertsImg}
       ></MenuCategory>
       {/* pizzas Items */}
-      <MenuCategory 
-      items={pizzas}
-      title="pizzas"
-      img={pizzasImg}
+      <MenuCategory
+        items={pizzas}
+        title="pizzas"
+        img={pizzasImg}
       ></MenuCategory>
       {/* salads Items */}
       <MenuCategory
-      items={salads}
-      title="salads"
-      img={saladsImg}
+        items={salads}
+        title="salads"
+        img={saladsImg}
       ></MenuCategory>
       {/* soups items */}
-      <MenuCategory
-      items={soups}
-      title="soups"
-      img={soupsImg}
-      ></MenuCategory>
+      <MenuCategory items={soups} title="soups" img={soupsImg}></MenuCategory>
     </div>
   );
 };
