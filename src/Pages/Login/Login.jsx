@@ -1,7 +1,29 @@
+import { useEffect, useRef, useState } from "react";
 import logpic from "../../assets/others/authentication1.png";
 import Tilt from "react-parallax-tilt";
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from "react-simple-captcha";
 
 const Login = () => {
+    const [disabled, setDisabled] = useState(true);
+  const captchaRef = useRef(null);
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
+
+  const handleRecaptcha = () => {
+    const user_captcha_value = captchaRef.current.value;
+
+    if (validateCaptcha(user_captcha_value) === true) {
+      alert("Captcha Matched");
+      setDisabled(false)
+    } else {
+      alert("Captcha Does Not Match");
+    }
+  };
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -48,8 +70,27 @@ const Login = () => {
                   required
                 />
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control text-black">
+                <label className="label">
+                  <LoadCanvasTemplate />
+                </label>
                 <input
+                  type="text"
+                  ref={captchaRef}
+                  name="recaptcha"
+                  placeholder="type recaptcha"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <button
+                className="btn btn-outline btn-xs mt-2 "
+                onClick={handleRecaptcha}
+              >
+                Validiate
+              </button>{" "}
+              <div className="form-control mt-6">
+                <input disabled={disabled}
                   className="btn btn-primary"
                   type="submit"
                   value="Login"
