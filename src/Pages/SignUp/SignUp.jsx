@@ -1,15 +1,21 @@
-import signUppic from '../../assets/others/authentication2.pngF'
+import { Link } from "react-router-dom";
+import sidePic from "../../assets/others/authentication2.png";
+import Tilt from "react-parallax-tilt";
 
 const SignUp = () => {
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen bg-black">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <img src={signUppic} alt="" />
-          
+          <Tilt className="">
+            <div className="w-3/4 ">
+              <img src={sidePic} alt="" />
+            </div>
+          </Tilt>
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <h1 className="text-5xl font-bold">Login now!</h1>
+
           <form className="card-body">
             <div className="form-control">
               <label className="label">
@@ -41,6 +47,12 @@ const SignUp = () => {
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
             </div>
+            <p className="text-black">
+              Already have an ?
+              <Link className="text-blue-500" to="/login">
+                Account
+              </Link>{" "}
+            </p>
           </form>
         </div>
       </div>
