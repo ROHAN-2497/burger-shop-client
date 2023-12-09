@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import logpic from "../../assets/others/authentication1.png";
 import Tilt from "react-parallax-tilt";
 import {
@@ -6,10 +6,12 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
   const captchaRef = useRef(null);
+  const {createUser, loading} = useContext(AuthContext);
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
