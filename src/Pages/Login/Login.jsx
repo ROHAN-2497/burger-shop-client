@@ -9,9 +9,9 @@ import {
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
-    const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(true);
   const captchaRef = useRef(null);
-  const {createUser, loading} = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -21,7 +21,7 @@ const Login = () => {
 
     if (validateCaptcha(user_captcha_value) === true) {
       alert("Captcha Matched");
-      setDisabled(false)
+      setDisabled(false);
     } else {
       alert("Captcha Does Not Match");
     }
@@ -32,6 +32,10 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    signIn(email, password).then((result) => {
+      const user = result.user;
+      console.log("User", user);
+    });
   };
   return (
     <div>
@@ -92,7 +96,8 @@ const Login = () => {
                 Validiate
               </button>{" "}
               <div className="form-control mt-6">
-                <input disabled={disabled}
+                <input
+                  disabled={disabled}
                   className="btn btn-primary"
                   type="submit"
                   value="Login"
