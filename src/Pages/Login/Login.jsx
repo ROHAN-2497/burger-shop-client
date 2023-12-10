@@ -8,6 +8,7 @@ import {
 } from "react-simple-captcha";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -40,6 +41,9 @@ const Login = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Burger Shop | Login </title>
+      </Helmet>
       <div className="hero  min-h-screen ">
         <div className="hero-content flex-col  px-20 lg:flex-row">
           <Tilt className="">

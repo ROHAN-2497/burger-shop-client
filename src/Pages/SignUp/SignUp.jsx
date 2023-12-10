@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import sidePic from "../../assets/others/authentication2.png";
 import Tilt from "react-parallax-tilt";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const SignUp = () => {
+  const { createUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -11,10 +15,17 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.loggedUser;
+      reset()
+      console.log(loggedUser);
+    });
   };
   return (
     <div className="hero min-h-screen bg-black">
+      <Helmet>
+        <title>Burger Shop | SignUp </title>
+      </Helmet>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <Tilt className="">
@@ -24,9 +35,9 @@ const SignUp = () => {
           </Tilt>
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form  onSubmit={handleSubmit(onSubmit)} className="card-body mpt-20">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body mpt-20">
             <h1 className="text-5xl text-black font-bold">SignUp now!</h1>
-            <div className="form-control">
+            <div className="form-control text-black">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
@@ -57,7 +68,7 @@ const SignUp = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type=""
+                type="password"
                 {...register("password", {
                   required: true,
                   pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
