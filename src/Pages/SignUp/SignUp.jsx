@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import sidePic from "../../assets/others/authentication2.png";
 import Tilt from "react-parallax-tilt";
+import { useForm } from "react-hook-form";
 
 const SignUp = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <div className="hero min-h-screen bg-black">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -14,9 +23,8 @@ const SignUp = () => {
           </Tilt>
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-
-          <form className="card-body mpt-20">
-          <h1 className="text-5xl text-black font-bold">SignUp now!</h1>
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body mpt-20">
+            <h1 className="text-5xl text-black font-bold">SignUp now!</h1>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -25,11 +33,12 @@ const SignUp = () => {
                 type="name"
                 placeholder="name"
                 name="name"
+                {...register("name", { required: true })}
                 className="input input-bordered"
-                required
               />
+              {errors.name && <span>This field is required</span>}{" "}
             </div>
-            <div className="form-control">
+            <div className="form-control text-black">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
@@ -37,21 +46,37 @@ const SignUp = () => {
                 type="email"
                 placeholder="email"
                 name="email"
+                {...register("email", { required: true })}
                 className="input input-bordered"
-                required
               />
+              {errors.email && <span>Email field is required</span>}
             </div>
-            <div className="form-control">
+            <div className="form-control text-black">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
                 type="password"
+                {...register(
+                  "password",
+                  { required: true },
+                  {
+                    pattern:
+                      /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=..*[a-z]).{8}$/,
+                  }
+                )}
                 placeholder="password"
                 name="password"
                 className="input input-bordered"
-                required
               />
+              {errors.password?.type === "required" && (
+                <p className="text-red-500">password  is required</p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="text-red-500">
+                  one upper charecter one lower charecter one speacial charecter
+                </p>
+              )}
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">SignUp</button>
