@@ -7,6 +7,7 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
@@ -23,7 +24,7 @@ const SignUp = () => {
           </Tilt>
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleSubmit(onSubmit)} className="card-body mpt-20">
+          <form  onSubmit={handleSubmit(onSubmit)} className="card-body mpt-20">
             <h1 className="text-5xl text-black font-bold">SignUp now!</h1>
             <div className="form-control">
               <label className="label">
@@ -56,21 +57,17 @@ const SignUp = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
-                {...register(
-                  "password",
-                  { required: true },
-                  {
-                    pattern:
-                      /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=..*[a-z]).{8}$/,
-                  }
-                )}
+                type=""
+                {...register("password", {
+                  required: true,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                })}
                 placeholder="password"
                 name="password"
                 className="input input-bordered"
               />
               {errors.password?.type === "required" && (
-                <p className="text-red-500">password  is required</p>
+                <p className="text-red-500">password is required</p>
               )}
               {errors.password?.type === "pattern" && (
                 <p className="text-red-500">
@@ -79,7 +76,7 @@ const SignUp = () => {
               )}
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">SignUp</button>
+              <input className="btn btn-primary" type="submit" value="SignUp" />
             </div>
             <p className="text-black text-center">
               Already have an ?
