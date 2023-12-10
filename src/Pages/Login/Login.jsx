@@ -104,10 +104,10 @@ const Login = () => {
                   value="Login"
                 />
               </div>
-              <p className="text-black">
+              <p className="text-black text-center">
                 New here Create a?
-                 <Link className="text-blue-500 " to="/signup">
-                   new Account
+                <Link className="text-blue-500 " to="/signup">
+                  new Account
                 </Link>
               </p>
             </form>
