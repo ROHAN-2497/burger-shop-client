@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logpic from "../../assets/others/authentication1.png";
 import Tilt from "react-parallax-tilt";
 import {
@@ -9,17 +9,17 @@ import {
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const [disabled, setDisabled] = useState(true);
-  const captchaRef = useRef(null);
+  const [ setDisabled] = useState(true);
   const { signIn } = useContext(AuthContext);
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
 
-  const handleRecaptcha = () => {
-    const user_captcha_value = captchaRef.current.value;
+  const handleRecaptcha = (e) => {
+    const user_captcha_value = e.target.value;
 
     if (validateCaptcha(user_captcha_value) === true) {
       alert("Captcha Matched");
@@ -37,6 +37,13 @@ const Login = () => {
     signIn(email, password).then((result) => {
       const user = result.user;
       console.log("User", user);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "User Logged in Succesfull",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
   };
   return (
@@ -44,7 +51,7 @@ const Login = () => {
       <Helmet>
         <title>Burger Shop | Login </title>
       </Helmet>
-      <div className="hero  min-h-screen ">
+      <div className="hero  min-h-screen  text-black">
         <div className="hero-content flex-col  px-20 lg:flex-row">
           <Tilt className="">
             <div className="w-3/4 ">
@@ -87,22 +94,16 @@ const Login = () => {
                 </label>
                 <input
                   type="text"
-                  ref={captchaRef}
+                  onBlur={handleRecaptcha}
                   name="recaptcha"
                   placeholder="type recaptcha"
                   className="input input-bordered"
                   required
                 />
               </div>
-              <button
-                className="btn btn-outline btn-xs mt-2 "
-                onClick={handleRecaptcha}
-              >
-                Validiate
-              </button>{" "}
+            
               <div className="form-control mt-6">
                 <input
-                  disabled={disabled}
                   className="btn btn-primary"
                   type="submit"
                   value="Login"
