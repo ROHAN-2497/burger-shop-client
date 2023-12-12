@@ -7,13 +7,16 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const [ setDisabled] = useState(true);
+  const [setDisabled] = useState(true);
   const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -24,8 +27,6 @@ const Login = () => {
     if (validateCaptcha(user_captcha_value) === true) {
       alert("Captcha Matched");
       setDisabled(false);
-    } else {
-      alert("Captcha Does Not Match");
     }
   };
   const handleLogin = (event) => {
@@ -44,6 +45,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate(from, { replace: true });
     });
   };
   return (
@@ -101,7 +103,7 @@ const Login = () => {
                   required
                 />
               </div>
-            
+
               <div className="form-control mt-6">
                 <input
                   className="btn btn-primary"
