@@ -1,6 +1,16 @@
 import { Helmet } from "react-helmet";
-import { FaCalendar, FaHome, FaShoppingCart, FaWallet } from "react-icons/fa";
-import { Link, Outlet } from "react-router-dom";
+import {
+  FaAddressBook,
+  FaCalendar,
+  FaHome,
+  FaMoneyBill,
+  FaShoppingBag,
+  FaShoppingCart,
+  FaWallet,
+} from "react-icons/fa";
+import { NavLink, Outlet } from "react-router-dom";
+import { MdMenu } from "react-icons/md";
+import { IoIosContact } from "react-icons/io";
 
 const DashBoard = () => {
   return (
@@ -24,27 +34,58 @@ const DashBoard = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content uppercase">
+        <ul className="menu p-4 w-80 min-h-full bg-[#D1A054] uppercase">
           {/* Sidebar content here */}
           <li>
-            <Link>
+            <NavLink to='/dashboard/userhome'>
               <FaHome></FaHome> user home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link>
+            <NavLink to='/dashboard/reservation'>
               <FaCalendar></FaCalendar>reservation
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link>
+            <NavLink to='/dashboard/history'>
               <FaWallet></FaWallet>payment history
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link>
+            <NavLink to='/dashboard/mycart'>
               <FaShoppingCart></FaShoppingCart> My Cart
-            </Link>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/dashboard/review'>
+              <FaMoneyBill></FaMoneyBill> add reivew
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/dashboard/booking'>
+              <FaAddressBook></FaAddressBook> my booking
+            </NavLink>
+          </li>
+          <div className="divider"></div>
+          <li>
+            <NavLink to="/">
+              <FaHome></FaHome> Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/order/salads">
+              <MdMenu /> Menu
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/menu">
+              <FaShoppingBag></FaShoppingBag> Shop
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/">
+              <IoIosContact /> Contact
+            </NavLink>
           </li>
         </ul>
       </div>
