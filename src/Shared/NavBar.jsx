@@ -6,7 +6,7 @@ import useCart from "../Hooks/useCart";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const   [cart] = useCart();
+  const [cart] = useCart();
   const handleLogout = () => {
     logOut()
       .then(() => {})
@@ -27,7 +27,7 @@ const NavBar = () => {
         <Link to="/secret">Secret </Link>
       </li>
       <li>
-        <Link to="/mycart">
+        <Link to="/dashboard/mycart">
           <button className="btn btn-xs">
             <FaShoppingCart></FaShoppingCart>
             <div className="badge">{cart?.length || 0}</div>

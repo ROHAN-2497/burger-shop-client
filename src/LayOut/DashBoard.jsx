@@ -1,9 +1,16 @@
+import { Helmet } from "react-helmet";
+import { FaCalendar, FaHome, FaShoppingCart, FaWallet } from "react-icons/fa";
+import { Link, Outlet } from "react-router-dom";
+
 const DashBoard = () => {
   return (
     <div className="drawer lg:drawer-open">
+      <Helmet>
+        <title>Burger Shop || DashBoard</title>
+      </Helmet>
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
-        {/* Page content here */}
+        <Outlet></Outlet>
         <label
           htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"
@@ -17,13 +24,27 @@ const DashBoard = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content uppercase">
           {/* Sidebar content here */}
           <li>
-            <a>Sidebar Item 1</a>
+            <Link>
+              <FaHome></FaHome> user home
+            </Link>
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <Link>
+              <FaCalendar></FaCalendar>reservation
+            </Link>
+          </li>
+          <li>
+            <Link>
+              <FaWallet></FaWallet>payment history
+            </Link>
+          </li>
+          <li>
+            <Link>
+              <FaShoppingCart></FaShoppingCart> My Cart
+            </Link>
           </li>
         </ul>
       </div>
