@@ -11,8 +11,10 @@ import {
 import { NavLink, Outlet } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
 import { IoIosContact } from "react-icons/io";
+import useCart from "../Hooks/useCart";
 
 const DashBoard = () => {
+  const [cart] = useCart();
   return (
     <div className="drawer lg:drawer-open">
       <Helmet>
@@ -35,34 +37,34 @@ const DashBoard = () => {
           className="drawer-overlay"
         ></label>
         <ul className="menu p-4 w-80 min-h-full bg-[#D1A054] uppercase">
-          {/* Sidebar content here */}
           <li>
-            <NavLink to='/dashboard/userhome'>
+            <NavLink to="/dashboard/userhome">
               <FaHome></FaHome> user home
             </NavLink>
           </li>
           <li>
-            <NavLink to='/dashboard/reservation'>
+            <NavLink to="/dashboard/reservation">
               <FaCalendar></FaCalendar>reservation
             </NavLink>
           </li>
           <li>
-            <NavLink to='/dashboard/history'>
+            <NavLink to="/dashboard/history">
               <FaWallet></FaWallet>payment history
             </NavLink>
           </li>
           <li>
-            <NavLink to='/dashboard/mycart'>
+            <NavLink to="/dashboard/mycart">
               <FaShoppingCart></FaShoppingCart> My Cart
+              <span className="badge">{cart?.length || 0}</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to='/dashboard/review'>
+            <NavLink to="/dashboard/review">
               <FaMoneyBill></FaMoneyBill> add reivew
             </NavLink>
           </li>
           <li>
-            <NavLink to='/dashboard/booking'>
+            <NavLink to="/dashboard/booking">
               <FaAddressBook></FaAddressBook> my booking
             </NavLink>
           </li>
