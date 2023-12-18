@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -21,22 +22,30 @@ const SignUp = () => {
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      updateUserProfile(data.name, data.photoURL)
-        .then(() => {
-          console.log("user update profile");
+      updateUserProfile(data.name, data.photoURL).then(() => {
+        const saveUser = { name: data.name, email: data.email };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
         })
-        .catch((error) => {
-          console.log(error);
-        });
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "User Profile Update..",
-        showConfirmButton: false,
-        timer: 1500,
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User Profile Update..",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+            navigate("/");
+          });
       });
-      navigate('/')
-      reset();
     });
   };
   return (
@@ -125,6 +134,7 @@ const SignUp = () => {
                 Account
               </Link>{" "}
             </p>
+            <SocialLogin></SocialLogin>
           </form>
         </div>
       </div>
