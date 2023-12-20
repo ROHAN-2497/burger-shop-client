@@ -1,13 +1,17 @@
 import { Helmet } from "react-helmet";
 import {
   FaAddressBook,
+  FaBook,
   FaCalendar,
   FaHome,
   FaMoneyBill,
   FaShoppingBag,
   FaShoppingCart,
+  FaUsers,
+  FaUtensils,
   FaWallet,
 } from "react-icons/fa";
+import { TfiMenuAlt } from "react-icons/tfi";
 import { NavLink, Outlet } from "react-router-dom";
 import { MdMenu } from "react-icons/md";
 import { IoIosContact } from "react-icons/io";
@@ -15,6 +19,8 @@ import useCart from "../Hooks/useCart";
 
 const DashBoard = () => {
   const [cart] = useCart();
+  // TODO: admin 
+  const isAdmin = true;
   return (
     <div className="drawer lg:drawer-open">
       <Helmet>
@@ -37,37 +43,70 @@ const DashBoard = () => {
           className="drawer-overlay"
         ></label>
         <ul className="menu p-4 w-80 min-h-full bg-[#D1A054] uppercase">
-          <li>
-            <NavLink to="/dashboard/userhome">
-              <FaHome></FaHome> user home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/reservation">
-              <FaCalendar></FaCalendar>reservation
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/history">
-              <FaWallet></FaWallet>payment history
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/mycart">
-              <FaShoppingCart></FaShoppingCart> My Cart
-              <span className="badge">{cart?.length || 0}</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/review">
-              <FaMoneyBill></FaMoneyBill> add reivew
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard/booking">
-              <FaAddressBook></FaAddressBook> my booking
-            </NavLink>
-          </li>
+          {isAdmin ? (
+            <>
+              <li>
+                <NavLink to="/dashboard/userhome">
+                  <FaHome></FaHome> admin home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/reservation">
+                  <FaUtensils></FaUtensils> add items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/history">
+                  <TfiMenuAlt /> manage items
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/history">
+                  <FaBook></FaBook> manage bookings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/allusers">
+                  <FaUsers></FaUsers> all users
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <NavLink to="/dashboard/userhome">
+                  <FaHome></FaHome> user home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/reservation">
+                  <FaCalendar></FaCalendar>reservation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/history">
+                  <FaWallet></FaWallet>payment history
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/mycart">
+                  <FaShoppingCart></FaShoppingCart> My Cart
+                  <span className="badge">{cart?.length || 0}</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/review">
+                  <FaMoneyBill></FaMoneyBill> add reivew
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/booking">
+                  <FaAddressBook></FaAddressBook> my booking
+                </NavLink>
+              </li>
+            </>
+          )}
+
           <div className="divider"></div>
           <li>
             <NavLink to="/">
