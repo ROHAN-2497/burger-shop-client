@@ -11,7 +11,7 @@ const useCart = () => {
         `http://localhost:5000/carts?email=${user.email}`,
         {
           headers: {
-            authorization: `bearer ${token}`,
+            authorization: `Bearer ${token}`,
           },
         }
       );

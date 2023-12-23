@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import Swal from "sweetalert2";
 
 const AllUsers = () => {
-  const { data: users = [], refetch } = useQuery(["users"], async () => {
+  const { data: users = [] } = useQuery(["users"], async () => {
     const res = await fetch("http://localhost:5000/users");
     return res.json();
   });
@@ -25,7 +25,6 @@ const AllUsers = () => {
         }
       });
   };
-  const handleDelete = (user) => {};
   return (
     <div className="bg-white text-black p-8">
       <Helmet>
@@ -64,10 +63,7 @@ const AllUsers = () => {
                 </td>
                 <td>
                   {" "}
-                  <button
-                    onClick={() => handleDelete(user)}
-                    className="btn btn-ghost btn-sm h-10 bg-red-500 text-white"
-                  >
+                  <button className="btn btn-ghost btn-sm h-10 bg-red-500 text-white">
                     <FaTrash />
                   </button>
                 </td>
