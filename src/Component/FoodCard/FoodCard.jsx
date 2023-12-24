@@ -20,7 +20,7 @@ const FoodCard = ({ item }) => {
         image,
         email: user.email,
       };
-      fetch("http://localhost:5000/carts", {
+      fetch("https://burger-shop-server-nu.vercel.app/carts", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

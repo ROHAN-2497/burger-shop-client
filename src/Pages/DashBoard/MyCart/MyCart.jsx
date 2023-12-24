@@ -19,7 +19,7 @@ console.log(total);
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${item._id}`, {
+        fetch(`https://burger-shop-server-nu.vercel.app/carts/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

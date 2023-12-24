@@ -8,7 +8,7 @@ const useCart = () => {
     queryKey: ["carts", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/carts?email=${user.email}`,
+        `https://burger-shop-server-nu.vercel.app/carts?email=${user.email}`,
         {
           headers: {
             authorization: `Bearer ${token}`,

@@ -5,11 +5,11 @@ import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const { data: users = [] } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users");
+    const res = await fetch("https://burger-shop-server-nu.vercel.app/users");
     return res.json();
   });
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://burger-shop-server-nu.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
