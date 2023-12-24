@@ -23,6 +23,7 @@ const NavBar = () => {
       <li>
         <Link to="/order/salads">Order Food</Link>
       </li>
+      <h1>lknflfds</h1>
       
       <li>
         <Link to="/dashboard/mycart">
